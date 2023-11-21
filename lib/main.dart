@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_restapi_test_f23/my_rest_api.dart';
 
 //import 'package:http/http.dart' as http;
-import 'album.dart';
-import 'cat_facts_model.dart';
+import 'album_model.dart';
 import 'pokemon_model.dart';
-import 'mlb_teams_model.dart';
+import 'baseball_teams_model.dart';
 
 void main() => runApp(const MyApp());
 
@@ -22,6 +21,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   late Future<Album> futureAlbum;
   late Future<List<Team>> futureBaseballTeams;
+  late Future<List<PokemonCard>> futurePokemonCardList;
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     MyRestAPI api = new MyRestAPI();
     futureAlbum = api.fetchAlbum();
     futureBaseballTeams = api.fetchBaseballTeams();
-
+    futurePokemonCardList = api.fetchPokemon();
   }
 
   @override
@@ -44,11 +44,11 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Fetch Data Example'),
         ),
         body:
-              //albumFutureBuilder(),
-              //buildBody(context),
-        BaseballTeamWidget(),
-        ),
-      );
+            albumFutureBuilder(),
+            //PokemonCardWidget(),
+            //BaseballTeamWidget(),
+      ),
+    );
   }
 
   FutureBuilder<Album> albumFutureBuilder() {
@@ -60,7 +60,6 @@ class _MyAppState extends State<MyApp> {
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }
-
         // By default, show a loading spinner.
         return const CircularProgressIndicator();
       },
@@ -72,7 +71,8 @@ class _MyAppState extends State<MyApp> {
       future: futureBaseballTeams,
       builder: (context, snapshot) {
         print('Baseball team widget updating');
-        if (snapshot.data == null  || snapshot.connectionState == ConnectionState.none ||
+        if (snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.none ||
             snapshot.hasData == null) {
           print('project snapshot data is: ${snapshot.data}');
           return Container();
@@ -83,42 +83,42 @@ class _MyAppState extends State<MyApp> {
           itemBuilder: (context, index) {
             Team team = snapshot.data![index];
             return ListTile(
-              title: Text(team.teamName,),
-              subtitle: Text(team.locationName??'no loacation'),
-
+              title: Text(
+                team.teamName,
+              ),
+              subtitle: Text(team.locationName ?? 'no loacation'),
             );
           },
         );
       },
-
     );
   }
 
-  Widget buildBody(BuildContext context) {
-    return ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: 4,
-        //shrinkWrap: true,
-        itemBuilder: (BuildContext context, int position) {
-          return buildListTile(position);
+  Widget PokemonCardWidget() {
+    return FutureBuilder(
+      future: futurePokemonCardList,
+      builder: (context, snapshot) {
+        print('Pokemon team widget updating');
+        if (snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.none ||
+            snapshot.hasData == null) {
+          print('project snapshot data is: ${snapshot.data}');
+          return Container();
         }
+        print('snapshot length is: ${snapshot.data!.length}');
+        return ListView.builder(
+          itemCount: snapshot.data!.length,
+          itemBuilder: (context, index) {
+            PokemonCard card = snapshot.data![index];
+            return ListTile(
+              title: Text(
+                card.name,
+              ),
+              subtitle: Text(card.flavorText ?? 'no flavors'),
+            );
+          },
+        );
+      },
     );
   }
-
-  ListTile buildListTile(int position) {
-    return ListTile(
-        shape: Border(
-          top: BorderSide(),
-          bottom: BorderSide(),
-        ),
-        leading:  Icon(Icons.access_time_outlined),
-        title: Row(
-          children: <Widget>[
-            Icon(Icons.airline_seat_recline_normal_rounded),
-            Text("Row :" ),
-          ],
-        ),
-    );
-  }
-
 }

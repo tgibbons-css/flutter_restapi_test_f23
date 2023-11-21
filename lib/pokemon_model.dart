@@ -49,25 +49,25 @@ class PokemonCard {
   List<TypeElement> types;
   String? evolvesFrom;
   List<Attack>? attacks;
-  List<Resistance>? weaknesses;
-  List<Resistance>? resistances;
-  List<TypeElement>? retreatCost;
-  int? convertedRetreatCost;
-  Set datumSet;
-  String number;
-  String artist;
-  Rarity? rarity;
+  // List<Resistance>? weaknesses;
+  // List<Resistance>? resistances;
+  // List<TypeElement>? retreatCost;
+  // int? convertedRetreatCost;
+  // Set datumSet;
+  // String number;
+  // String artist;
+  // Rarity? rarity;
   String? flavorText;
-  List<int> nationalPokedexNumbers;
-  Legalities legalities;
-  DatumImages images;
-  Tcgplayer? tcgplayer;
-  Cardmarket? cardmarket;
-  List<String>? evolvesTo;
-  String? level;
-  List<Ability>? abilities;
-  List<String>? rules;
-  String? regulationMark;
+  // List<int> nationalPokedexNumbers;
+  // Legalities legalities;
+  // DatumImages images;
+  // Tcgplayer? tcgplayer;
+  // Cardmarket? cardmarket;
+  // List<String>? evolvesTo;
+  // String? level;
+  // List<Ability>? abilities;
+  // List<String>? rules;
+  // String? regulationMark;
 
   PokemonCard({
     required this.id,
@@ -78,25 +78,25 @@ class PokemonCard {
     required this.types,
     this.evolvesFrom,
     this.attacks,
-    this.weaknesses,
-    this.resistances,
-    this.retreatCost,
-    this.convertedRetreatCost,
-    required this.datumSet,
-    required this.number,
-    required this.artist,
-    this.rarity,
+    // this.weaknesses,
+    // this.resistances,
+    // this.retreatCost,
+    // this.convertedRetreatCost,
+    // required this.datumSet,
+    // required this.number,
+    // required this.artist,
+    // this.rarity,
     this.flavorText,
-    required this.nationalPokedexNumbers,
-    required this.legalities,
-    required this.images,
-    this.tcgplayer,
-    this.cardmarket,
-    this.evolvesTo,
-    this.level,
-    this.abilities,
-    this.rules,
-    this.regulationMark,
+    // required this.nationalPokedexNumbers,
+    // required this.legalities,
+    // required this.images,
+    // this.tcgplayer,
+    // this.cardmarket,
+    // this.evolvesTo,
+    // this.level,
+    // this.abilities,
+    // this.rules,
+    // this.regulationMark,
   });
 
   factory PokemonCard.fromJson(Map<String, dynamic> json) => PokemonCard(
@@ -108,25 +108,25 @@ class PokemonCard {
     types: List<TypeElement>.from(json["types"].map((x) => typeElementValues.map[x]!)),
     evolvesFrom: json["evolvesFrom"],
     attacks: json["attacks"] == null ? [] : List<Attack>.from(json["attacks"]!.map((x) => Attack.fromJson(x))),
-    weaknesses: json["weaknesses"] == null ? [] : List<Resistance>.from(json["weaknesses"]!.map((x) => Resistance.fromJson(x))),
-    resistances: json["resistances"] == null ? [] : List<Resistance>.from(json["resistances"]!.map((x) => Resistance.fromJson(x))),
-    retreatCost: json["retreatCost"] == null ? [] : List<TypeElement>.from(json["retreatCost"]!.map((x) => typeElementValues.map[x]!)),
-    convertedRetreatCost: json["convertedRetreatCost"],
-    datumSet: Set.fromJson(json["set"]),
-    number: json["number"],
-    artist: json["artist"],
-    rarity: rarityValues.map[json["rarity"]]!,
+    // weaknesses: json["weaknesses"] == null ? [] : List<Resistance>.from(json["weaknesses"]!.map((x) => Resistance.fromJson(x))),
+    // resistances: json["resistances"] == null ? [] : List<Resistance>.from(json["resistances"]!.map((x) => Resistance.fromJson(x))),
+    // retreatCost: json["retreatCost"] == null ? [] : List<TypeElement>.from(json["retreatCost"]!.map((x) => typeElementValues.map[x]!)),
+    // convertedRetreatCost: json["convertedRetreatCost"],
+    // datumSet: Set.fromJson(json["set"]),
+    // number: json["number"],
+    // artist: json["artist"],
+    // rarity: rarityValues.map[json["rarity"]]!,
     flavorText: json["flavorText"],
-    nationalPokedexNumbers: List<int>.from(json["nationalPokedexNumbers"].map((x) => x)),
-    legalities: Legalities.fromJson(json["legalities"]),
-    images: DatumImages.fromJson(json["images"]),
-    tcgplayer: json["tcgplayer"] == null ? null : Tcgplayer.fromJson(json["tcgplayer"]),
-    cardmarket: json["cardmarket"] == null ? null : Cardmarket.fromJson(json["cardmarket"]),
-    evolvesTo: json["evolvesTo"] == null ? [] : List<String>.from(json["evolvesTo"]!.map((x) => x)),
-    level: json["level"],
-    abilities: json["abilities"] == null ? [] : List<Ability>.from(json["abilities"]!.map((x) => Ability.fromJson(x))),
-    rules: json["rules"] == null ? [] : List<String>.from(json["rules"]!.map((x) => x)),
-    regulationMark: json["regulationMark"],
+    // nationalPokedexNumbers: List<int>.from(json["nationalPokedexNumbers"].map((x) => x)),
+    // legalities: Legalities.fromJson(json["legalities"]),
+    // images: DatumImages.fromJson(json["images"]),
+    // tcgplayer: json["tcgplayer"] == null ? null : Tcgplayer.fromJson(json["tcgplayer"]),
+    // cardmarket: json["cardmarket"] == null ? null : Cardmarket.fromJson(json["cardmarket"]),
+    // evolvesTo: json["evolvesTo"] == null ? [] : List<String>.from(json["evolvesTo"]!.map((x) => x)),
+    // level: json["level"],
+    // abilities: json["abilities"] == null ? [] : List<Ability>.from(json["abilities"]!.map((x) => Ability.fromJson(x))),
+    // rules: json["rules"] == null ? [] : List<String>.from(json["rules"]!.map((x) => x)),
+    // regulationMark: json["regulationMark"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -138,25 +138,25 @@ class PokemonCard {
     "types": List<dynamic>.from(types.map((x) => typeElementValues.reverse[x])),
     "evolvesFrom": evolvesFrom,
     "attacks": attacks == null ? [] : List<dynamic>.from(attacks!.map((x) => x.toJson())),
-    "weaknesses": weaknesses == null ? [] : List<dynamic>.from(weaknesses!.map((x) => x.toJson())),
-    "resistances": resistances == null ? [] : List<dynamic>.from(resistances!.map((x) => x.toJson())),
-    "retreatCost": retreatCost == null ? [] : List<dynamic>.from(retreatCost!.map((x) => typeElementValues.reverse[x])),
-    "convertedRetreatCost": convertedRetreatCost,
-    "set": datumSet.toJson(),
-    "number": number,
-    "artist": artist,
-    "rarity": rarityValues.reverse[rarity],
+    // "weaknesses": weaknesses == null ? [] : List<dynamic>.from(weaknesses!.map((x) => x.toJson())),
+    // "resistances": resistances == null ? [] : List<dynamic>.from(resistances!.map((x) => x.toJson())),
+    // "retreatCost": retreatCost == null ? [] : List<dynamic>.from(retreatCost!.map((x) => typeElementValues.reverse[x])),
+    // "convertedRetreatCost": convertedRetreatCost,
+    // "set": datumSet.toJson(),
+    // "number": number,
+    // "artist": artist,
+    // "rarity": rarityValues.reverse[rarity],
     "flavorText": flavorText,
-    "nationalPokedexNumbers": List<dynamic>.from(nationalPokedexNumbers.map((x) => x)),
-    "legalities": legalities.toJson(),
-    "images": images.toJson(),
-    "tcgplayer": tcgplayer?.toJson(),
-    "cardmarket": cardmarket?.toJson(),
-    "evolvesTo": evolvesTo == null ? [] : List<dynamic>.from(evolvesTo!.map((x) => x)),
-    "level": level,
-    "abilities": abilities == null ? [] : List<dynamic>.from(abilities!.map((x) => x.toJson())),
-    "rules": rules == null ? [] : List<dynamic>.from(rules!.map((x) => x)),
-    "regulationMark": regulationMark,
+    // "nationalPokedexNumbers": List<dynamic>.from(nationalPokedexNumbers.map((x) => x)),
+    // "legalities": legalities.toJson(),
+    // "images": images.toJson(),
+    // "tcgplayer": tcgplayer?.toJson(),
+    // "cardmarket": cardmarket?.toJson(),
+    // "evolvesTo": evolvesTo == null ? [] : List<dynamic>.from(evolvesTo!.map((x) => x)),
+    // "level": level,
+    // "abilities": abilities == null ? [] : List<dynamic>.from(abilities!.map((x) => x.toJson())),
+    // "rules": rules == null ? [] : List<dynamic>.from(rules!.map((x) => x)),
+    // "regulationMark": regulationMark,
   };
 }
 
