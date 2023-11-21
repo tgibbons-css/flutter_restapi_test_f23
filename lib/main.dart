@@ -72,8 +72,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, snapshot) {
         print('Baseball team widget updating');
         if (snapshot.data == null ||
-            snapshot.connectionState == ConnectionState.none ||
-            snapshot.hasData == null) {
+            snapshot.connectionState == ConnectionState.none) {
           print('project snapshot data is: ${snapshot.data}');
           return Container();
         }
@@ -100,8 +99,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, snapshot) {
         print('Pokemon team widget updating');
         if (snapshot.data == null ||
-            snapshot.connectionState == ConnectionState.none ||
-            snapshot.hasData == null) {
+            snapshot.connectionState == ConnectionState.none) {
           print('project snapshot data is: ${snapshot.data}');
           return Container();
         }
